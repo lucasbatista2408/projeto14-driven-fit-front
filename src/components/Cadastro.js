@@ -21,8 +21,8 @@ function Cadastro(){
   function SignUp(e){
     e.preventDefault();
     console.log('clicked')
-
-    const URL = "https://mywallet-backend-lucasb.herokuapp.com/signup"
+    const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
+    const URL = `${REACT_APP_DB_URL}/signup`
     const signUp = form;
     const promise = axios.post(URL, signUp)
     promise
@@ -67,7 +67,7 @@ const SignIn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: purple;
+  background-color: #1E1F28;
 
   img{
     margin-bottom: 32px;

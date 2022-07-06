@@ -20,10 +20,10 @@ export default function Login(){
 
   function HandleLogIn(e){
     e.preventDefault();
-    const URI = process.env.REACT_APP_DB_URL
-    const AXIOS = `${URI}/login`
+    const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
+    const URL = `${REACT_APP_DB_URL}/login`
     const infoLogIn = form;
-    const promise = axios.post(AXIOS, infoLogIn)
+    const promise = axios.post(URL, infoLogIn)
     promise.then(res => { 
       const dados = res.data;
       setInfo(dados)
