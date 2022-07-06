@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Login from "./components/Login.js"
+import Cadastro from "./components/Cadastro.js"
+import Home from "./components/Home.js"
+import Product from "./components/Product.js"
+import Cart from "./components/Cart.js"
+import CheckOut from "./components/CheckOut.js"
 
-function App() {
+import UserContext from "./contexts/UserContext"
+
+function App(){
+
+  const [info, setInfo] = useState({});
+  const contextValue = {info, setInfo}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <UserContext.Provider value={contextValue}>
+      <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<Login/>}/>
+            <Route path='/cadastro' element={<Cadastro/>}/>
+            <Route path='/home' element={<Home />}/>
+            <Route path='/product' element={<Product />}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/checkout' element={<CheckOut/>}/>
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
+  )
 }
 
 export default App;
