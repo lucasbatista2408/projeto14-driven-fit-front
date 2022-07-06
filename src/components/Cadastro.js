@@ -12,7 +12,7 @@ function Cadastro(){
     confirm: ''
   })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   console.log(form)
 
