@@ -60,7 +60,7 @@ export default function Login(){
 }
 
 const LoginPage = styled.div`
-  min-width: 375px;
+  min-width: 350px;
   width: 100%;
   min-height: 665px;
   height: 100vh;
@@ -100,7 +100,7 @@ const Form = styled.form`
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
-    width: 326px;
+    width: 85%;
     height: 58px;
     row-gap: 6px;
     margin-bottom: 6px;
@@ -113,7 +113,7 @@ const Form = styled.form`
 
 `
 const SignUpButton = styled.div`
-  width: 75%;
+  width: 85%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -131,9 +131,7 @@ const SignUpButton = styled.div`
     color: white;
   }
   ion-icon{
-    position: fixed;
-    top: 378px;
-    left: 328px;
+    margin-top: 6px;
     color: #EF3651;
     font-size: 1rem;
   }
@@ -148,7 +146,7 @@ const Button = styled.div`
     font-weight: 700;
     font-family: 'Montserrat', sans-serif;
     margin-top: 40px;
-    width: 326px;
+    width: 85%;
     height: 46px;
     border: none;
     border-radius: 26px;
