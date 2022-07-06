@@ -20,9 +20,10 @@ export default function Login(){
 
   function HandleLogIn(e){
     e.preventDefault();
-    const URL = "https://mywallet-backend-lucasb.herokuapp.com/login"
+    const URI = process.env.REACT_APP_DB_URL
+    const AXIOS = `${URI}/login`
     const infoLogIn = form;
-    const promise = axios.post(URL, infoLogIn)
+    const promise = axios.post(AXIOS, infoLogIn)
     promise.then(res => { 
       const dados = res.data;
       setInfo(dados)
@@ -43,14 +44,17 @@ export default function Login(){
   return( 
     <LoginPage>
       <Logo>
-        <h1> MyWallet </h1>
+        <h1> DRIVEN-FIT </h1>
       </Logo>
       <Form>
         <input type="text" value={form.email} placeholder='email' onChange={e => setForm({...form, email: e.target.value})} required/>
         <input type="password" value={form.password} placeholder='senha' onChange={e => setForm({...form, password: e.target.value})} required/>
-        <button onClick={HandleLogIn} type="submit" >entrar</button>
       </Form>
-        <Button onClick={HandleClick}>Primeira vez? Cadastre-se</Button>
+        <SignUpButton>
+          <button onClick={HandleClick}>Primeira vez? Cadastre-se</button>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </SignUpButton>
+        <Button onClick={HandleLogIn} type="submit">ENTRAR</Button>
     </LoginPage>
   )
 }
@@ -64,7 +68,7 @@ const LoginPage = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: purple;
+  background-color: #1E1F28;
 
   img{
     margin-bottom: 32px;
@@ -82,52 +86,73 @@ const Logo = styled.div`
 `
 
 const Form = styled.form`
-  font-family: 'Lexend Deca', sans-serif;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   input{
+    color: white;
+    background-color: #2A2C36;
     outline: none;
     transition: 0.5s;
-    padding-left: 10px;
+    padding-left: 20px;
     border-radius: 4px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
     width: 326px;
     height: 58px;
     row-gap: 6px;
     margin-bottom: 6px;
-    border: 1px solid #D4D4D4;
+    border: 0;
     ::placeholder,
     ::-webkit-input-placeholder {
-    color: black;
+    color: #ABB4BD;
   }
 }
 
-  button{
-    font-size: 1.25rem;
-    font-weight: 700;
-    font-family: 'Raleway', sans-serif;
-    margin-top: 6px;
-    width: 326px;
-    height: 46px;
-    border: none;
-    border-radius: 6px;
-    background-color: #A328D6;
-    color: ${props => props.loading ? "#F2F2F2F" : "#FFFFFF"};
-  }
 `
+const SignUpButton = styled.div`
+  width: 75%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-end; */
+  justify-content: flex-end;
 
-const Button = styled.button`
-    font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
+  button{
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    margin-top: 36px;
+    margin-top: 4px;
     border: none;
     background-color: transparent;
     text-decoration: none;
     color: white;
+  }
+  ion-icon{
+    position: fixed;
+    top: 378px;
+    left: 328px;
+    color: #EF3651;
+    font-size: 1rem;
+  }
+
 `
 
+const Button = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    width: 326px;
+    height: 46px;
+    border: none;
+    border-radius: 26px;
+    background-color: #EF3651;
+    color: ${props => props.loading ? "#F2F2F2F" : "#FFFFFF"};
+
+`
