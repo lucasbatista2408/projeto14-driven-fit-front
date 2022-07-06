@@ -22,6 +22,7 @@ export default function Login(){
     e.preventDefault();
     const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
     const URL = `${REACT_APP_DB_URL}/login`
+    console.log(URL)
     const infoLogIn = form;
     const promise = axios.post(URL, infoLogIn)
     promise.then(res => { 
@@ -117,13 +118,12 @@ const SignUpButton = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  /* align-items: flex-end; */
   justify-content: flex-end;
 
   button{
     font-size: 0.85rem;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 4px;
     border: none;
     background-color: transparent;
@@ -143,7 +143,7 @@ const Button = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 400;
     font-family: 'Montserrat', sans-serif;
     margin-top: 40px;
     width: 85%;
