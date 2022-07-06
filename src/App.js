@@ -12,7 +12,7 @@ import UserContext from "./contexts/UserContext"
 function App(){
 
   const [info, setInfo] = useState({});
-  const contextValue = {info, setInfo}
+  const contextValue = {info, setInfo, }
 
   return (
     <UserContext.Provider value={contextValue}>

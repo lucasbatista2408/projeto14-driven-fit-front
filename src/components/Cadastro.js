@@ -44,7 +44,7 @@ function Cadastro(){
   return  (
   <SignIn>
     <Logo>
-      <h1> MyWallet </h1>
+      <h1> DRIVEN-FIT </h1>
     </Logo>
     <Form>
       <input type="text" placeholder="Nome" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required />
@@ -91,42 +91,45 @@ const Form = styled.form`
   align-items: center;
 
   input{
-    padding-left: 10px;
+    color: white;
+    background-color: #2A2C36;
+    outline: none;
+    transition: 0.5s;
+    padding-left: 20px;
     border-radius: 4px;
-    font-size: 1.25rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    width: 326px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    width: 85%;
     height: 58px;
     row-gap: 6px;
     margin-bottom: 6px;
-    border: 1px solid #D4D4D4;
+    border: 0;
     ::placeholder,
     ::-webkit-input-placeholder {
-    color: black;
+    color: #ABB4BD;
   }
 }
 
 
   button{
-    font-size: 1.25rem;
-    font-family: 'Raleway', cursive;
-    font-weight: 700;
-    margin-top: 6px;
-    width: 326px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    width: 85%;
     height: 46px;
     border: none;
-    border-radius: 6px;
-    background-color: #A328D6;
+    border-radius: 26px;
+    background-color: #EF3651;
     color: white;
   }
 `
 
 const Button = styled.button`
-    font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    margin-top: 36px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-top: 1rem;
     border: none;
     background-color: transparent;
     text-decoration: none;
