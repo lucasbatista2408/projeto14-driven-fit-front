@@ -5,8 +5,12 @@ import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 
+import MainMenu from "./layout/MainMenu";
+
 export default function Home(){
   return(
-    <>teste</>
+    <>teste
+      <MainMenu />
+    </>
   )
 }
