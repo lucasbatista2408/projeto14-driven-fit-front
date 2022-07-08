@@ -8,6 +8,9 @@ import UserContext from "../contexts/UserContext";
 export default function Login(){
   
   const { setInfo } = useContext(UserContext);
+  const { storage, setStorage } = useContext(UserContext);
+
+  console.log(storage)
 
   const[form, setForm] = useState({
     email: '',
@@ -29,7 +32,8 @@ export default function Login(){
       const dados = res.data;
       setInfo(dados)
       console.log(dados.token)
-      localStorage.setItem("token", dados.token)
+      // localStorage.setItem("token", dados.token)
+      setStorage(localStorage.setItem("token", dados.token))
       navigate('/home')}
       )
 
