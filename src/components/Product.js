@@ -7,13 +7,15 @@ import UserContext from "../contexts/UserContext";
 import data from '../data/Data.js'
 import ProductSelected from "./ProductSelected";
 export default function Product(props){
-  const { products, onAdd } = props
+
+  const {  products } = useContext(UserContext);
+
   return(
     <div className="block-col-2">
       <h2>produtos</h2>
       <div className="row">
         {products.map((item)=>(
-          <ProductSelected item={item} key={item.id} onAdd={onAdd}/>
+          <ProductSelected item={item} key={item.id} />
         ))}
       </div>
     </div>

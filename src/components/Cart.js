@@ -5,23 +5,25 @@ import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import tenis from './tenis.jpeg'
-export default function Cart(props){
-  const teste=localStorage.getItem("teste")
-const { cartItems } = props
-const{  onAdd, onRemove }=props
 
+export default function Cart(props){
+ 
+
+const{  onRemove }=props
+const { onAdd, cartItems} = useContext(UserContext);
   const [quantity,setQuantity]=React.useState(1)
   const [very,setVery]=React.useState(false)
   const [total,setTotal]=React.useState([])
-  let sum=0;
-const ob=JSON.parse(`{${teste}}`)
-console.log(typeof(teste))  
-console.log(typeof(ob))  
-console.log(ob)
+ 
+
+console.log(cartItems)
+const {imagem} = cartItems
+console.log(imagem)
+
   return(
     <div className="block col-1">
       <h2>Meu carrinho</h2>
-    <h2>{teste.name}</h2>
+   
       {cartItems.map((item)=>{
         <div key={item.key} className="row">
           <div style={{color:"red"} }className="col-2">{item.name}</div>
@@ -37,6 +39,8 @@ console.log(ob)
     </div>
   )
   }
+
+
 
 const MainStyle=styled.div`
   background-color:#1E1F28;

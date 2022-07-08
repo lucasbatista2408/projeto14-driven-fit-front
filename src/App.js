@@ -16,7 +16,7 @@ function App(){
   const contextValue = {info, setInfo}
   const { products } = data
   console.log(products)
-  console.log(cartItems)
+
   const onAdd=(product)=>{
     const exist=cartItems.find(x=>x.id===product.id)
 
@@ -28,16 +28,16 @@ function App(){
     }
   }
   
-  localStorage.setItem('teste',cartItems)
+  
   return (
-    <UserContext.Provider value={contextValue}>
+    <UserContext.Provider value={{contextValue, cartItems, onAdd, products, setCartItems}}>
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Login/>}/>
             <Route path='/cadastro' element={<Cadastro/>}/>
             <Route path='/home' element={<Home />}/>
-            <Route path='/product' element={<Product onAdd={onAdd} products={products}/>}/>
-            <Route path='/cart' element={<Cart onAdd={onAdd} cartItems={cartItems} />}/>
+            <Route path='/product' element={<Product  />}/>
+            <Route path='/cart' element={<Cart  />}/>
             <Route path='/checkout' element={<CheckOut/>}/>
         </Routes>
       </BrowserRouter>
