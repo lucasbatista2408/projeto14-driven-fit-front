@@ -28,7 +28,8 @@ export default function Login(){
     promise.then(res => { 
       const dados = res.data;
       setInfo(dados)
-      console.log(dados)
+      console.log(dados.token)
+      localStorage.setItem("token", dados.token)
       navigate('/home')}
       )
 
