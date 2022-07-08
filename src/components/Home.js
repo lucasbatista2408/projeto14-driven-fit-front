@@ -7,6 +7,15 @@ import UserContext from "../contexts/UserContext";
 
 export default function Home(){
   return(
-    <>teste</>
+   <MainStyle>
+     <h1></h1>
+   </MainStyle>
   )
 }
+
+
+
+const MainStyle=styled.div`
+  background-color:#1E1F28;
+  color:#FFF;
+`

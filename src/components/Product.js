@@ -4,9 +4,19 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
-
-export default function Product(){
+import data from '../data/Data.js'
+import ProductSelected from "./ProductSelected";
+export default function Product(props){
+  const { products, onAdd } = props
   return(
-    <>teste</>
+    <div className="block-col-2">
+      <h2>produtos</h2>
+      <div className="row">
+        {products.map((item)=>(
+          <ProductSelected item={item} key={item.id} onAdd={onAdd}/>
+        ))}
+      </div>
+    </div>
   )
+ 
 }
