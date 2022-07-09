@@ -4,8 +4,6 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
-import teste1 from "../assets/img/teste1.jpg"
-import background2 from "../assets/img/background2.jpg"
 import background from "../assets/img/background.png"
 
 export default function Login(){
@@ -60,10 +58,6 @@ export default function Login(){
 
   return(
     <LoginPage>
-      {/* <Background>
-        <img src={teste1}></img>
-      </Background> */}
-      
       <Logo>
         <h1> DRIVEN-FIT </h1>
       </Logo>
@@ -79,10 +73,6 @@ export default function Login(){
     </LoginPage>
   )
 }
-
-const Background = styled.div`
-
-`
 
 const LoginPage = styled.div`
   min-width: 350px;
@@ -105,7 +95,6 @@ const LoginPage = styled.div`
 `
 
 const Logo = styled.div`
-  /* font-family: 'Saira Stencil One', cursive; */
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -152,7 +141,6 @@ const SignUpButton = styled.div`
 
   button{
     font-size: 0.85rem;
-    /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     margin-top: 4px;
@@ -175,7 +163,6 @@ const Button = styled.div`
     justify-content: center;
     font-size: 0.85rem;
     font-weight: 700;
-    /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Josefin Sans', sans-serif;
     margin-top: 40px;
     width: 85%;

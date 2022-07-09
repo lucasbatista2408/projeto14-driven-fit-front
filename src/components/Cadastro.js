@@ -120,7 +120,6 @@ const Form = styled.form`
   button{
     font-size: 0.85rem;
     font-weight: 700;
-    /* font-family: 'Montserrat', sans-serif; */
     font-family: 'Josefin Sans', sans-serif;
     margin-top: 40px;
     width: 85%;
