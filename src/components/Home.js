@@ -4,13 +4,30 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
-
+import { CartState } from '../contexts/Context'
+import Header from "./Header";
+import Oneproduct from "./Oneproduct";
+import './testStyle.css'
 export default function Home(){
-  return(
-   <MainStyle>
-     <h1></h1>
-   </MainStyle>
-  )
+
+  const { state: {products} } = CartState();
+  console.log(products)
+  console.log(products.name)
+  return    <div><Header />
+  <div className="home">
+   
+  
+     <div className="containerofProducts">
+       {
+         products.map((prod)=>{
+         return <Oneproduct prod={prod} key={prod.id}/>
+         })
+       }
+     </div>
+     </div></div>
+   
+  
+ 
 }
 
 

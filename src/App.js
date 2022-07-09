@@ -8,6 +8,7 @@ import Cart from "./components/Cart.js"
 import CheckOut from "./components/CheckOut.js"
 import data from './data/Data.js'
 import UserContext from "./contexts/UserContext"
+import Cart3 from './components/Cart3.js'
 
 function App(){
 
@@ -37,7 +38,7 @@ function App(){
             <Route path='/cadastro' element={<Cadastro/>}/>
             <Route path='/home' element={<Home />}/>
             <Route path='/product' element={<Product  />}/>
-            <Route path='/cart' element={<Cart  />}/>
+            <Route path='/cart' element={<Cart3  />}/>
             <Route path='/checkout' element={<CheckOut/>}/>
         </Routes>
       </BrowserRouter>
