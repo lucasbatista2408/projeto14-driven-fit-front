@@ -8,9 +8,7 @@ import UserContext from "../contexts/UserContext";
 export default function Login(){
   
   const { setInfo } = useContext(UserContext);
-  const { storage, setStorage } = useContext(UserContext);
-
-  console.log(storage)
+  const {local, setLocal} = useContext(UserContext);
 
   const[form, setForm] = useState({
     email: '',
@@ -23,18 +21,28 @@ export default function Login(){
 
   function HandleLogIn(e){
     e.preventDefault();
+
     const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
     const URL = `${REACT_APP_DB_URL}/login`
+
     console.log(URL)
-    const infoLogIn = form;
-    const promise = axios.post(URL, infoLogIn)
+    
+    const promise = axios.post(URL, form)
     promise.then(res => { 
       const dados = res.data;
+
       setInfo(dados)
-      console.log(dados.token)
-      // localStorage.setItem("token", dados.token)
-      setStorage(localStorage.setItem("token", dados.token))
-      navigate('/home')}
+
+      localStorage.setItem("token", dados.token)
+      setLocal(localStorage.getItem("token"))
+
+        if(local.length === 0){
+          alert('bad request')
+          window.location.reload(true)
+        } else{
+          navigate('/home')
+        }
+      }
       )
 
     promise.catch(error => (
