@@ -4,9 +4,12 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import teste1 from "../assets/img/teste1.jpg"
+import background2 from "../assets/img/background2.jpg"
+import background from "../assets/img/background.png"
 
 export default function Login(){
-  
+
   const { setInfo } = useContext(UserContext);
   const {local, setLocal} = useContext(UserContext);
 
@@ -26,9 +29,9 @@ export default function Login(){
     const URL = `${REACT_APP_DB_URL}/login`
 
     console.log(URL)
-    
+
     const promise = axios.post(URL, form)
-    promise.then(res => { 
+    promise.then(res => {
       const dados = res.data;
 
       setInfo(dados)
@@ -55,8 +58,12 @@ export default function Login(){
     navigate("/cadastro")
   }
 
-  return( 
+  return(
     <LoginPage>
+      {/* <Background>
+        <img src={teste1}></img>
+      </Background> */}
+      
       <Logo>
         <h1> DRIVEN-FIT </h1>
       </Logo>
@@ -73,6 +80,10 @@ export default function Login(){
   )
 }
 
+const Background = styled.div`
+
+`
+
 const LoginPage = styled.div`
   min-width: 350px;
   width: 100%;
@@ -83,6 +94,10 @@ const LoginPage = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #1E1F28;
+  background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   img{
     margin-bottom: 32px;
@@ -90,13 +105,15 @@ const LoginPage = styled.div`
 `
 
 const Logo = styled.div`
-  font-family: 'Saira Stencil One', cursive;
+  /* font-family: 'Saira Stencil One', cursive; */
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
   margin-bottom: 1.5rem;
   h1{
     font-size: 2rem;
     color: white;
   }
-  
+
 `
 
 const Form = styled.form`
@@ -135,7 +152,8 @@ const SignUpButton = styled.div`
 
   button{
     font-size: 0.85rem;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     margin-top: 4px;
     border: none;
@@ -156,8 +174,9 @@ const Button = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Josefin Sans', sans-serif;
     margin-top: 40px;
     width: 85%;
     height: 46px;
