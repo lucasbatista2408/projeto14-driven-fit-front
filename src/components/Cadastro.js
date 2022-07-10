@@ -14,7 +14,7 @@ function Cadastro(){
     picture: ''
   })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   console.log(form)
 

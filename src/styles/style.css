@@ -1,0 +1,14 @@
+/* GLOBAL */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, strong, a, input, button{
+	font-family: 'Montserrat', sans-serif;
+	
+}
+a{
+	text-decoration: none;
+}
+html, body, .root{
+	background-color: #1E1F28;
+}
+*{
+  box-sizing: border-box;
+}
