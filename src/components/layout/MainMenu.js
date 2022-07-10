@@ -6,30 +6,30 @@ import axios from "axios"
 /*Icones*/
 import { IoHomeOutline, IoHomeSharp, IoLogOutOutline, IoLogOut, IoBagHandleOutline, IoBagHandleSharp} from "react-icons/io5";
 
-export default function MainMenu(){
+export default function MainMenu({active}){
 
-    const [active, setActive] = useState(true);
-
+    //const [active, setActive] = useState(true);
+    alert(active);
     return(
         <Menu>
 
             <Link to={`/home`}>
-                <MenuItem>
-                    <IoHomeOutline />
+                <MenuItem className={active == "home" ? "active" : "" }>
+                    {active == "home" ? <IoHomeSharp /> : <IoHomeOutline /> }
                     Home
                 </MenuItem>
             </Link>
                        
-            <Link to={`/cart`} >
+            <Link to={`/cart`} className={active === "cart" ? "active" : "" }>
                 <MenuItem>
-                    <IoBagHandleOutline />
+                    {active === "cart" ? <IoBagHandleSharp /> : <IoBagHandleOutline />  }
                     Bag
                 </MenuItem>
             </Link>
             
             <Link to={`/`} >
                 <MenuItem>
-                    <IoLogOutOutline />
+                    <IoLogOutOutline /> 
                     Logout
                 </MenuItem>
             </Link>
@@ -56,9 +56,10 @@ const Menu = styled.div`
     justify-content: space-between;
     font-size: 12px;
     line-height: 26px;
+    z-index: 100;
     a{
         text-decoration: none;
-        color: #ABB4BD;
+        
     }
 `;
 const MenuItem = styled.div`
@@ -66,6 +67,10 @@ const MenuItem = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #ABB4BD;
+    &.active{
+        color: #EF3651;
+    }
     svg{
         font-size: 30px;
     }
