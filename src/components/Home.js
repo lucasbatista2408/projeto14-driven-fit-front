@@ -47,9 +47,11 @@ export default function Home(){
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-
+    
+    const token = localStorage.getItem("token");
+   
     const config = {
-        headers: { Authorization: `Bearer c2cfd871-8f5a-4f15-80a8-016ae64a8776` } // Trocar por ${user.token}
+        headers: { Authorization: `Bearer ${token}` } // Trocar por ${user.token}
     };
 
     const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
