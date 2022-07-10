@@ -9,6 +9,7 @@ export default function Header() {
     const { state:{cart} } = CartState() 
 
   return ( <Navbar bg='dark' varient='dark' style={{height: 80}}>
+     
       <Container>
           <Navbar.Brand  style={{color: 'white'}}>Driven Fit</Navbar.Brand>
           <Nav>

@@ -1,6 +1,14 @@
 .home {
     display: flex;
     background-color: #1E1F28;
+    
+  }
+  .Navbar{
+    box-shadow:5px 10px #888888 !important
+  }
+  Button{
+    background-color: #EF3651 !important;
+    box-shadow: 0px 4px 8px rgba(239, 54, 81, 0.35) !important;
   }
   .detailInsideCart{
     display: flex;
@@ -10,6 +18,16 @@
   }
   .title{
     font-size: 30px;
+  }
+  .Card{
+    box-shadow:5px 10px #888888 !important;
+  }
+  .back-ground-dark{
+    background-color: #1E1F28;
+    color: white;
+    font-size:30px;
+    margin:0 auto;
+    text-align: center;
   }
   .filterStyle{
     background-color: #343a40;
@@ -53,4 +71,24 @@
     align-items: center;
     margin: 0 20px;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 771px) {
+    .containerofProducts {
+      width: 100%;
+      padding: 0;
+    }
+    .filterStyle {
+      width: 40%;
+      padding: 10px;
+      margin: 5px;
+    }
+    .filterStyle > span {
+      font-size: 10px;
+    }
+    Button{
+      margin: 0 auto;
+      justify-content: center;
+    }
+
   }

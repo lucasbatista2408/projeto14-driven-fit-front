@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 import Product from '../components/Product';
 import { cartReducer } from './Reducer';
     const Cart = createContext();
-    faker.seed(99) // renderiza faker apenas uma vez.
+    faker.seed(99) // renderiza faker apenas uma vez. 
     const Context = ({children})=>{
 
         //adiciona produtos aleatorios (uns 20) atraves da bilioteca faker (para teste)
@@ -11,7 +11,7 @@ import { cartReducer } from './Reducer';
             id: faker.datatype.uuid(),
             name: faker.commerce.product(),
             price: faker.finance.amount(),
-            image: faker.image.cats(),
+            image: faker.image.animals(),
           }));
         console.log(products)
 

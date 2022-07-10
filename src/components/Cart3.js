@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header'
+import { Link } from 'react-router-dom'
 import { CartState } from '../contexts/Context'
 import { AiFillDelete } from 'react-icons/ai'
 import { ListGroup, Button, Row, Col, Form, FormControl, Image } from 'react-bootstrap'
@@ -13,12 +14,13 @@ function Cart3() {
     React.useEffect(()=>{
         setTotal(cart.reduce((previousValue,currentValue)=>previousValue+Number(currentValue.price)*currentValue.qty,0))
     },[cart])
-
+    localStorage.setItem('total',total)
   return (
       <>
       <Header />
       <div className='home'>
     <div className='containerofCartProducts'>
+    <div className="back-ground-dark">Meu carrinho</div>
     <ListGroup>
             {
                 cart.map(item=>(
@@ -50,7 +52,7 @@ function Cart3() {
                             </FormControl>
                         </Col>
 
-                        <Button varient='light' onClick={()=> dispatch({
+                        <Button className='pink' varient='light' onClick={()=> dispatch({
                             type:'REMOVE',
                             payload:item
                         })}>
@@ -69,7 +71,7 @@ function Cart3() {
             </span>
 
             <span style={{fontWeight: 700, fontSize: 21}}>Total: {total}</span>
-            <Button disabled={cart.length===0}>Finalizar compra</Button>
+            <Link to='/checkout'><Button disabled={cart.length===0}>Finalizar compra</Button></Link>
     </div>
     </div>
     </>
