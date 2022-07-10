@@ -11,8 +11,10 @@ import UserContext from "./contexts/UserContext"
 
 function App(){
 
-  const [info, setInfo] = useState({});
-  const contextValue = {info, setInfo, }
+  const [info, setInfo] = useState({}); // SALVA O NOME DE USUARIO E TOKEN QUE VEM DO BACK
+  const [local, setLocal] = useState({}); // SALVA O TOKEN QUE VEM DO LOCAL STORAGE
+  const contextValue = {info, setInfo, local, setLocal }
+  console.log(local)
 
   return (
     <UserContext.Provider value={contextValue}>
