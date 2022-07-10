@@ -8,8 +8,7 @@ import { IoHomeOutline, IoHomeSharp, IoLogOutOutline, IoLogOut, IoBagHandleOutli
 
 export default function MainMenu({active}){
 
-    //const [active, setActive] = useState(true);
-    alert(active);
+    
     return(
         <Menu>
 
