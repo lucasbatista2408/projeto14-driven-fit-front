@@ -1,51 +1,83 @@
 import styled from "styled-components"
-import React, {useState} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
-import { useContext } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import UserContext from "../contexts/UserContext";
+
+import { Pagination } from "swiper";
+
+import "swiper/css";
 
 import MainMenu from "./layout/MainMenu";
 
-function Category(){
+function Category({name, products}){
 
   return (
     <>
-      <h1>Nome</h1>
-      <ProductsCarrosel>
-        <Link to={`/product`} >
-          <ProductBox>
-            <ProductImg src='http://ec2-54-207-222-235.sa-east-1.compute.amazonaws.com/produtos/Casual%20red%20shirt/prod-21.jpg'/>
-            <h2>Titulo</h2>
-            <h4>R$40,99</h4>
-          </ProductBox>
-        </Link>
-      </ProductsCarrosel>
+      
+      <h1>{name}</h1>
+
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        
+      >
+        {products.map( product =>
+            <SwiperSlide>
+              <Link to={`/product`} >
+                <ProductBox>
+                  <ProductImg src={product.images[0]}/>
+                  <h2>{product.title}</h2>
+                  <h4>{product.price}</h4>
+                </ProductBox>
+              </Link>
+            </SwiperSlide>
+        )}
+      </Swiper>
+      
     </>
   );
 }
 
 export default function Home(){
 
+  //const {user} = ???; -> Inserir dados do uusuário logado
+  
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+
+    const config = {
+        headers: { Authorization: `Bearer c2cfd871-8f5a-4f15-80a8-016ae64a8776` } // Trocar por ${user.token}
+    };
+
+    const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
+
+    promise.then(response => {
+
+      setProducts(response.data);
+    });
+
+ 
+  }, []);
+
+
   return(
-    <>
+      <>
+        <Hero>
+          <h1>DrivenFit</h1>
+        </Hero>
 
-      <Hero>
-        <h1>DrivenFit</h1>
-      </Hero>
+        <Container>
+          {products === null ? (<Loading>Carregando...</Loading>) : (
 
-      <Container>
+            products.map( category => <Category name={category.category} products={category.products}/> )
+          )}
+        </Container>
 
-        <Category />
-          
-
-        
-
-
-      </Container>
-
-      <MainMenu />
-    </>
+        <MainMenu />
+      </>
   )
 }
 
@@ -80,9 +112,6 @@ const Container = styled.div`
   }
 `;
 
-const ProductsCarrosel = styled.div`
-  display: flex;
-`;
 const ProductBox = styled.div`
 
   margin-right: 25px;
@@ -105,4 +134,12 @@ const ProductBox = styled.div`
 const ProductImg = styled.img`
   height: 230px;
   border-radius: 10px;
+`;
+const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #fff;
+  font-size: 20px;
 `;
