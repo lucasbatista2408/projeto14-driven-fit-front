@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {useNavigate} from "react-router-dom"
 import React, {useState} from "react"
 import axios from "axios"
+import background from "../assets/img/backsignup.png"
 
 function Cadastro(){
 
@@ -69,7 +70,10 @@ const SignIn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #1E1F28;
+  background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   img{
     margin-bottom: 32px;
@@ -77,7 +81,7 @@ const SignIn = styled.div`
 `
 
 const Logo = styled.div`
-  font-family: 'Saira Stencil One', cursive;
+  font-family: 'Josefin Sans', sans-serif;
   margin-bottom: 1.5rem;
   h1{
     font-size: 2rem;
@@ -115,8 +119,8 @@ const Form = styled.form`
 
   button{
     font-size: 0.85rem;
-    font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
     margin-top: 40px;
     width: 85%;
     height: 46px;
@@ -129,7 +133,7 @@ const Form = styled.form`
 
 const Button = styled.button`
     font-size: 0.85rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     margin-top: 1rem;
     border: none;
