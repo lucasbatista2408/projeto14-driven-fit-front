@@ -26,6 +26,7 @@ function Cadastro(){
     const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
     const URL = `${REACT_APP_DB_URL}/signup`
     const signUp = form;
+    //alert(URL);
     const promise = axios.post(URL, signUp)
     promise
     .then( res => {

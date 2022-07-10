@@ -49,7 +49,7 @@ export default function Home(){
   useEffect(() => {
     
     const token = localStorage.getItem("token");
-   
+    alert(token);
     const config = {
         headers: { Authorization: `Bearer ${token}` } // Trocar por ${user.token}
     };
