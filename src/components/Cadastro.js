@@ -75,7 +75,6 @@ const SignIn = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   img{
     margin-bottom: 32px;
   }
@@ -96,7 +95,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   input{
     color: white;
     background-color: #2A2C36;
@@ -116,8 +114,6 @@ const Form = styled.form`
     color: #ABB4BD;
   }
 }
-
-
   button{
     font-size: 0.85rem;
     font-weight: 700;

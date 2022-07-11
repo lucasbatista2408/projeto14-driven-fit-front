@@ -11,12 +11,13 @@ export default function CheckOut(){
   let total=localStorage.getItem('total');
   const { state: { cart }, dispatch } = CartState()
 
-  const URL_X='http://localhost:3017/checkout'
+  const URL_X='https://driven-fit-back.herokuapp.com/checkout'
 
   const[cardData,setCardData]=React.useState({
     name:"",
     cardNumber:""
 })
+
   const [loading, setLoading] = React.useState(false)
 
   function Enviar(e){
@@ -27,6 +28,7 @@ export default function CheckOut(){
     promise.then((response)=>{
       console.log(response.data)
       //MODAL DE SUCESSO:
+      prompt('compra realizada com sucesso')
     })
     promise.catch((err)=>{
       alert('não foi possivel finalizar a compra. Tente novamente');
