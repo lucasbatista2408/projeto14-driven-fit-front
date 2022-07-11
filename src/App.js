@@ -4,7 +4,6 @@ import Login from "./components/Login.js"
 import Cadastro from "./components/Cadastro.js"
 import Home from "./components/Home.js"
 import Product from "./components/Product.js"
-import Cart from "./components/Cart.js"
 import CheckOut from "./components/CheckOut.js"
 import data from './data/Data.js'
 import UserContext from "./contexts/UserContext"
@@ -15,23 +14,14 @@ function App(){
   const [info, setInfo] = useState({});
   const [cartItems,setCartItems]=React.useState([])
   const contextValue = {info, setInfo}
-  const { products } = data
+  const [local, setLocal] = useState({})
+  const [products, setProducts] = useState([]);
   console.log(products)
 
-  const onAdd=(product)=>{
-    const exist=cartItems.find(x=>x.id===product.id)
-
-    if(exist){
-      setCartItems(cartItems.map(x=>x.id===product.id ? {...exist, qty:exist.qty+1}: x))
-    }
-    else{
-      setCartItems([...cartItems,{...product,qty:1}])
-    }
-  }
   
   
   return (
-    <UserContext.Provider value={{contextValue, cartItems, onAdd, products, setCartItems}}>
+    <UserContext.Provider value={{contextValue, products,setProducts,local,setLocal, cartItems, products, setCartItems,info, setInfo}}>
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Login/>}/>

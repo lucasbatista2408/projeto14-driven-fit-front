@@ -12,11 +12,10 @@ export default function Product(){
 
   const { state: {products} } = CartState();
   console.log(products)
-  console.log(products.name)
+
   return    <div><Header />
    <div className="back-ground-dark">Adicione produtos ao carrinho</div>
   <div className="home">
-   
    
      <div className="containerofProducts">
        {

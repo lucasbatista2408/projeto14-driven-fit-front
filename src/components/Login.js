@@ -4,10 +4,12 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import background from "../assets/img/background.png"
 
 export default function Login(){
-  
+
   const { setInfo } = useContext(UserContext);
+  const {local, setLocal} = useContext(UserContext);
 
   const[form, setForm] = useState({
     email: '',
@@ -20,16 +22,29 @@ export default function Login(){
 
   function HandleLogIn(e){
     e.preventDefault();
-    const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
-    const URL = `${REACT_APP_DB_URL}/login`
+
+    const DB_URL = process.env.REACT_APP_DB_URL
+    console.log(process.env.REACT_APP_DB_URL)
+    const URL = 'https://driven-fit-back.herokuapp.com/login'
+
     console.log(URL)
-    const infoLogIn = form;
-    const promise = axios.post(URL, infoLogIn)
-    promise.then(res => { 
+
+    const promise = axios.post(URL, form)
+    promise.then(res => {
       const dados = res.data;
-      setInfo(dados)
-      console.log(dados)
-      navigate('/home')}
+      
+      setInfo({dados})
+
+      localStorage.setItem("token", dados.token)
+      setLocal(localStorage.getItem("token"))
+
+        if(local.length === 0){
+          alert('bad request')
+          window.location.reload(true)
+        } else{
+          navigate('/home')
+        }
+      }
       )
 
     promise.catch(error => (
@@ -42,7 +57,7 @@ export default function Login(){
     navigate("/cadastro")
   }
 
-  return( 
+  return(
     <LoginPage>
       <Logo>
         <h1> DRIVEN-FIT </h1>
@@ -70,20 +85,23 @@ const LoginPage = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #1E1F28;
-
+  background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   img{
     margin-bottom: 32px;
   }
 `
 
 const Logo = styled.div`
-  font-family: 'Saira Stencil One', cursive;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
   margin-bottom: 1.5rem;
   h1{
     font-size: 2rem;
     color: white;
   }
-  
 `
 
 const Form = styled.form`
@@ -91,7 +109,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   input{
     color: white;
     background-color: #2A2C36;
@@ -111,7 +128,6 @@ const Form = styled.form`
     color: #ABB4BD;
   }
 }
-
 `
 const SignUpButton = styled.div`
   width: 85%;
@@ -119,10 +135,9 @@ const SignUpButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-
   button{
     font-size: 0.85rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     margin-top: 4px;
     border: none;
@@ -135,7 +150,6 @@ const SignUpButton = styled.div`
     color: #EF3651;
     font-size: 1rem;
   }
-
 `
 
 const Button = styled.div`
@@ -143,8 +157,8 @@ const Button = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
     margin-top: 40px;
     width: 85%;
     height: 46px;
@@ -152,5 +166,4 @@ const Button = styled.div`
     border-radius: 26px;
     background-color: #EF3651;
     color: ${props => props.loading ? "#F2F2F2F" : "#FFFFFF"};
-
 `

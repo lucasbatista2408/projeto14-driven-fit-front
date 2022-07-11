@@ -17,6 +17,7 @@ export default function CheckOut(){
     name:"",
     cardNumber:""
 })
+
   const [loading, setLoading] = React.useState(false)
 
   function Enviar(e){
