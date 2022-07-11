@@ -23,17 +23,7 @@ function Category({name, products}){
         spaceBetween={30}
         
       >
-        {products.map( product =>
-            <SwiperSlide>
-              <Link to={`/product`} >
-                <ProductBox>
-                  <ProductImg src={product.images[0]}/>
-                  <h2>{product.title}</h2>
-                  <h4>{product.price}</h4>
-                </ProductBox>
-              </Link>
-            </SwiperSlide>
-        )}
+        
       </Swiper>
       
     </>
@@ -45,6 +35,7 @@ export default function Home(){
   //const {user} = ???; -> Inserir dados do uusuário logado
   
   const [products, setProducts] = useState([]);
+  const [productsList, setProductsList] = useState([]);
 
   useEffect(() => {
     
@@ -57,9 +48,10 @@ export default function Home(){
     const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
 
     promise.then(response => {
-      
+
       setProducts(response.data);
-      console.log("==========================================");
+      setProductsList(...response.data );
+      console.log("================================================================productsList");
       console.log(products);
     });
 
