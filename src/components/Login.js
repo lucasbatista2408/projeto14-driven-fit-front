@@ -24,7 +24,7 @@ export default function Login(){
 
     const DB_URL = process.env.REACT_APP_DB_URL
 
-    const promise = axios.post(`${DB_URL}/login`, form)
+    const promise = axios.post(`${DB_URL}login`, form)
     promise.then(res => {
       const dados = res.data;
 

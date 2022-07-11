@@ -54,7 +54,7 @@ export default function Home(){
         headers: { Authorization: `Bearer ${token}` }
     };
 
-    const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
+    const promise = axios.get(`${process.env.REACT_APP_DB_URL}products-with-cat`, config);
 
     promise.then(response => {
 
