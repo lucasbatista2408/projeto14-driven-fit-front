@@ -19,7 +19,7 @@ function Category({name, products}){
       <h1>{name}</h1>
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={30}
         
       >
@@ -116,7 +116,6 @@ const Container = styled.div`
 `;
 
 const ProductBox = styled.div`
-
   margin-right: 25px;
   color:  #F6F6F6;
   padding-bottom: 20px;
@@ -126,12 +125,10 @@ const ProductBox = styled.div`
     font-size: 16px;
     line-height: 22px;
     font-weight: bold;
-
   }
   h4{
     font-size: 14px;
     line-height: 20px;
-
   }
 `;
 const ProductImg = styled.img`

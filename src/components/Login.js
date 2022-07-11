@@ -84,7 +84,6 @@ const LoginPage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   img{
     margin-bottom: 32px;
   }
@@ -98,7 +97,6 @@ const Logo = styled.div`
     font-size: 2rem;
     color: white;
   }
-
 `
 
 const Form = styled.form`
@@ -106,7 +104,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   input{
     color: white;
     background-color: #2A2C36;
@@ -126,7 +123,6 @@ const Form = styled.form`
     color: #ABB4BD;
   }
 }
-
 `
 const SignUpButton = styled.div`
   width: 85%;
@@ -134,7 +130,6 @@ const SignUpButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-
   button{
     font-size: 0.85rem;
     font-family: 'Josefin Sans', sans-serif;
@@ -150,7 +145,6 @@ const SignUpButton = styled.div`
     color: #EF3651;
     font-size: 1rem;
   }
-
 `
 
 const Button = styled.div`
@@ -167,5 +161,4 @@ const Button = styled.div`
     border-radius: 26px;
     background-color: #EF3651;
     color: ${props => props.loading ? "#F2F2F2F" : "#FFFFFF"};
-
 `
