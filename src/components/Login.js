@@ -23,8 +23,9 @@ export default function Login(){
   function HandleLogIn(e){
     e.preventDefault();
 
-    const DB_URL = process.env.DB_URL
-    const URL = `${process.env.DB_URL}/login`
+    const DB_URL = process.env.REACT_APP_DB_URL
+    console.log(process.env.REACT_APP_DB_URL)
+    const URL = `${DB_URL}/login`
 
     console.log(URL)
 
