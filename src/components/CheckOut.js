@@ -6,29 +6,50 @@ import { CartState } from '../contexts/Context'
 import { useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import UserContext from "../contexts/UserContext";
+import {useCart} from "../contexts/Cart"; 
+
 
 export default function CheckOut(){
+  
   let total=localStorage.getItem('total');
-  const { state: { cart }, dispatch } = CartState()
 
-  const URL_X='https://driven-fit-back.herokuapp.com/checkout'
+  const {cart, setCart} = useCart();
+
 
   const[cardData,setCardData]=React.useState({
     name:"",
     cardNumber:""
-})
+  })
 
   const [loading, setLoading] = React.useState(false)
 
   function Enviar(e){
+
+
+
     e.preventDefault();
+    const token = localStorage.getItem("token");
+    
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
     setLoading(true)
     
-    const promise=axios.post(URL_X,cardData);
+    const promise=axios.post(`${process.env.REACT_APP_DB_URL}checkout`,{
+      
+    
+      name: cardData.name,
+      card: cardData.cardNumber,
+      items: cart
+    
+    }, config);
+
+
     promise.then((response)=>{
       console.log(response.data)
       //MODAL DE SUCESSO:
-      prompt('compra realizada com sucesso')
+      alert('compra realizada com sucesso')
+      setCart([]);
     })
     promise.catch((err)=>{
       alert('não foi possivel finalizar a compra. Tente novamente');

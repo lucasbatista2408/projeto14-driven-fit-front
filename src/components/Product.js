@@ -11,21 +11,29 @@ import './testStyle.css'
 export default function Product(){
 
   const { state: {products} } = CartState();
-  console.log(products)
+  
 
-  return    <div><Header />
-   <div className="back-ground-dark">Adicione produtos ao carrinho</div>
-  <div className="home">
-   
-     <div className="containerofProducts">
-       {
-         products.map((prod)=>{
-         return <Oneproduct prod={prod} key={prod.id}/>
-         })
-       }
-     </div>
-     </div></div>
-   
+  return  (
+  
+    <>
+    
+      <Header />
+        <div className="back-ground-dark">Adicione produtos ao carrinho</div>
+        <div className="home">
+        
+          <div className="containerofProducts">
+            
+            {products === null ? (<Loading>Carregando...</Loading>) : (
+                
+                products.map((prod)=>{
+                  
+                  return <Oneproduct prod={prod} key={prod._id} />
+                })
+            )}
+          </div>
+        </div>
+    </>
+   )
   
  
 }
@@ -35,4 +43,9 @@ export default function Product(){
 const MainStyle=styled.div`
   background-color:#1E1F28;
   color:#FFF;
+`
+const Loading=styled.div`
+  background-color:#1E1F28;
+  color:#FFF;
+  margin-top: 100px;
 `

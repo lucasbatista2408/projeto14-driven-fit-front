@@ -4,6 +4,8 @@ import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 import { Swiper, SwiperSlide } from "swiper/react";
 import UserContext from "../contexts/UserContext";
+import { CartState } from '../contexts/Context'
+import {useCart} from "../contexts/Cart"; 
 
 import { Pagination } from "swiper";
 
@@ -12,6 +14,21 @@ import "swiper/css";
 import MainMenu from "./layout/MainMenu";
 
 function Category({name, products}){
+
+  const {cart, setCart} = useCart();
+
+  function AddCart(e, product){
+    
+    let carrinho = cart;
+
+    carrinho.push({...product , qty: 1});
+
+    setCart(carrinho);
+    
+    alert("Item adicionado ao carrinho");
+    console.log(cart);
+    e.preventDefault();
+  }
 
   return (
     <>
@@ -25,13 +42,14 @@ function Category({name, products}){
       >
         {products.map( product =>
             <SwiperSlide>
-              <Link to={`/product`} >
+             
                 <ProductBox>
                   <ProductImg src={product.images[0]}/>
                   <h2>{product.title}</h2>
                   <h4>{product.price}</h4>
+                  <AddToCart onClick={ e => AddCart(e, product) }>ADICIONAR AO CARRINHO</AddToCart>
                 </ProductBox>
-              </Link>
+              
             </SwiperSlide>
         )}
       </Swiper>
@@ -143,3 +161,17 @@ const Loading = styled.div`
   color: #fff;
   font-size: 20px;
 `;
+const AddToCart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  background: #EF3651;
+  font-size: 10px;
+  margin-top: 10px;
+`;
+

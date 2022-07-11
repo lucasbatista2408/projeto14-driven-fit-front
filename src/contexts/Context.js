@@ -12,41 +12,53 @@ import axios from 'axios';
         //adiciona produtos aleatorios (uns 20) atraves da bilioteca faker (para teste)
         
 
-        // const products = [...Array(20)].map(() => ({
-        //     id: faker.datatype.uuid(),
-        //     name: faker.commerce.product(),
-        //     price: faker.finance.amount(),
-        //     image: faker.image.animals(),
-        //   }));
+        /* const products = [...Array(20)].map(() => ({
+             id: faker.datatype.uuid(),
+            title: faker.commerce.product(),
+             price: faker.finance.amount(),
+             image: faker.image.animals(),
+           }));*/
         // console.log(products)
 
         const [products, setProducts] = useState([]);
         const [loading, setLoading] = useState(false)
-        const URL = 'https://driven-fit-back.herokuapp.com/products-with-cat'
+        
+
         useEffect(() => {
-          const token = localStorage.getItem("token");
-          const config = {
-              headers: { Authorization: `Bearer ${token}` }
-          };
+            const URL = `${process.env.REACT_APP_DB_URL}products`
+            const token = localStorage.getItem("token");
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
       
           //const promise = axios.get(`${process.env.REACT_APP_DB_URL}products-with-cat`, config);
-      const promise = axios.get(URL,config)
-          promise.then(response => {
-            setProducts(response.data);
-            setLoading(true)
+            const promise = axios.get(URL,config)
+
+            promise.then(response => {
+                setProducts(response.data);
+                setLoading(true)
+                
+            });
             
-          });
+
+
         }, []);
         
         const [state,dispatch] = useReducer(cartReducer, {
             products:products,
             cart:[]
         })
-   
+
+      
+ 
         return <Cart.Provider value={{  state,dispatch }} >{children}</Cart.Provider>
+        
+        
+        
     }
 
 export default Context;
+
 export const CartState=()=>{
     return useContext(Cart)
 }

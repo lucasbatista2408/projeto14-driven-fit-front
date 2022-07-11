@@ -54,6 +54,7 @@
     padding: 20px;
     flex-wrap: wrap;
     justify-content: space-around;
+    height: 100vh;
   }
   .productClass {
     width: 30%;

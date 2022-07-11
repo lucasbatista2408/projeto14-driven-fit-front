@@ -5,13 +5,13 @@ export default function Oneproduct({prod}) {
 
     const { state:{cart}, dispatch} = CartState()
 
-    console.log(cart)
+    
   return (
     <div className='productClass'>
         <Card>
-            <Card.Img variant='top' src={prod.image}></Card.Img>
+            <Card.Img variant='top' src={prod.image[0]}></Card.Img>
             <Card.Body>
-                <Card.Title>{prod.name}</Card.Title>
+                <Card.Title>{prod.title}</Card.Title>
                 <Card.Subtitle>
                     <span>{prod.price}</span>
                 </Card.Subtitle>
