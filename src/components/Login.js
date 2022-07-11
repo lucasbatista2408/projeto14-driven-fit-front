@@ -24,7 +24,7 @@ export default function Login(){
     e.preventDefault();
 
     const DB_URL = process.env.DB_URL
-    const URL = `${DB_URL}/login`
+    const URL = `${process.env.DB_URL}/login`
 
     console.log(URL)
 
