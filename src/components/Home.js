@@ -19,7 +19,7 @@ function Category({name, products}){
       <h1>{name}</h1>
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={30}
         
       >
