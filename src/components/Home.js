@@ -49,7 +49,7 @@ export default function Home(){
   useEffect(() => {
     
     const token = localStorage.getItem("token");
-    alert(token);
+    
     const config = {
         headers: { Authorization: `Bearer ${token}` } // Trocar por ${user.token}
     };
@@ -57,8 +57,10 @@ export default function Home(){
     const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
 
     promise.then(response => {
-
+      
       setProducts(response.data);
+      console.log("==========================================");
+      console.log(products);
     });
 
  
