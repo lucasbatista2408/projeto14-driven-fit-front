@@ -11,10 +11,10 @@ function Cadastro(){
     email: '',
     password: '',
     confirm: '',
-    picture: ''
+    photo: ''
   })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   console.log(form)
 
@@ -24,8 +24,9 @@ function Cadastro(){
     e.preventDefault();
     console.log('clicked')
     const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
-    const URL = `${REACT_APP_DB_URL}/signup`
+    const URL = 'https://driven-fit-back.herokuapp.com/signup'
     const signUp = form;
+    //alert(URL);
     const promise = axios.post(URL, signUp)
     promise
     .then( res => {
@@ -53,7 +54,7 @@ function Cadastro(){
       <input type="text" placeholder="E-mail" value={form.email} onChange={e => setForm({...form, email: e.target.value})} required/>
       <input type="password" placeholder="Senha" value={form.password} onChange={e => setForm({...form, password: e.target.value})} required/>
       <input type="password" placeholder="Confirmar Senha"  value={form.confirm} onChange={e => setForm({...form, confirm: e.target.value})} required/>
-      <input type="photo" placeholder="Foto (URL)"  value={form.picture} onChange={e => setForm({...form, picture: e.target.value})} required/>
+      <input type="text" placeholder="Foto (URL)"  value={form.photo} onChange={e => setForm({...form, photo: e.target.value})} required/>
       <button onClick={SignUp}>Cadastrar</button>
     </Form>
     <Button onClick={HandleLogIn}>Ja tem uma conta? Entre agora!</Button>
