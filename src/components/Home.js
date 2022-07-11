@@ -23,7 +23,17 @@ function Category({name, products}){
         spaceBetween={30}
         
       >
-        
+        {products.map( product =>
+            <SwiperSlide>
+              <Link to={`/product`} >
+                <ProductBox>
+                  <ProductImg src={product.images[0]}/>
+                  <h2>{product.title}</h2>
+                  <h4>{product.price}</h4>
+                </ProductBox>
+              </Link>
+            </SwiperSlide>
+        )}
       </Swiper>
       
     </>
@@ -49,8 +59,8 @@ export default function Home(){
 
     promise.then(response => {
 
-      setProducts(response.data);
-      setProductsList(...response.data );
+      setProducts(...response.data);
+      //setProductsList(...response.data );
       console.log("================================================================productsList");
       console.log(products);
     });
