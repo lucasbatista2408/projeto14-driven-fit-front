@@ -42,27 +42,24 @@ function Category({name, products}){
 
 export default function Home(){
 
-  //const {user} = ???; -> Inserir dados do uusuário logado
   
   const [products, setProducts] = useState([]);
-  const [productsList, setProductsList] = useState([]);
+
 
   useEffect(() => {
     
     const token = localStorage.getItem("token");
     
     const config = {
-        headers: { Authorization: `Bearer ${token}` } // Trocar por ${user.token}
+        headers: { Authorization: `Bearer ${token}` }
     };
 
     const promise = axios.get(`${process.env.REACT_APP_DB_URL}/products-with-cat`, config);
 
     promise.then(response => {
 
-      setProducts(...response.data);
-      //setProductsList(...response.data );
-      console.log("================================================================productsList");
-      console.log(products);
+      setProducts(response.data);
+      
     });
 
  

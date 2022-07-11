@@ -24,12 +24,8 @@ export default function Login(){
     e.preventDefault();
 
     const DB_URL = process.env.REACT_APP_DB_URL
-    console.log(process.env.REACT_APP_DB_URL)
-    const URL = 'https://driven-fit-back.herokuapp.com/login'
 
-    console.log(URL)
-
-    const promise = axios.post(URL, form)
+    const promise = axios.post(DB_URL, form)
     promise.then(res => {
       const dados = res.data;
 
