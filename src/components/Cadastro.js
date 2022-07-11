@@ -24,7 +24,7 @@ function Cadastro(){
     e.preventDefault();
     console.log('clicked')
     const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
-    const URL = `${REACT_APP_DB_URL}/signup`
+    const URL = 'https://driven-fit-back.herokuapp.com/signup'
     const signUp = form;
     const promise = axios.post(URL, signUp)
     promise
