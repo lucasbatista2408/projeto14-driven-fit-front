@@ -12,11 +12,11 @@ import Cart3 from './components/Cart3.js'
 
 function App(){
 
-  const [info, setInfo] = useState({});
-  const [cartItems,setCartItems]=React.useState([])
-  const contextValue = {info, setInfo}
-  const { products } = data
-  console.log(products)
+  const [info, setInfo] = useState({}); // SALVA O NOME DE USUARIO E TOKEN QUE VEM DO BACK
+  const [local, setLocal] = useState({}); // SALVA O TOKEN QUE VEM DO LOCAL STORAGE
+  const [cartItems,setCartItems]=useState([])
+  const contextValue = {info, setInfo, local, setLocal }
+  console.log(local)
 
   const onAdd=(product)=>{
     const exist=cartItems.find(x=>x.id===product.id)
