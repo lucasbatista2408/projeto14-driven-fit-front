@@ -23,8 +23,9 @@ export default function Login(){
   function HandleLogIn(e){
     e.preventDefault();
 
-    const REACT_APP_DB_URL = process.env.REACT_APP_DB_URL
-    const URL = `${REACT_APP_DB_URL}/login`
+    const DB_URL = process.env.REACT_APP_DB_URL
+    console.log(process.env.REACT_APP_DB_URL)
+    const URL = 'https://driven-fit-back.herokuapp.com/login'
 
     console.log(URL)
 
