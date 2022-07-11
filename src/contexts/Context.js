@@ -21,6 +21,7 @@ import axios from 'axios';
         // console.log(products)
 
         const [products, setProducts] = useState([]);
+        const [loading, setLoading] = useState(false)
         const URL = 'https://driven-fit-back.herokuapp.com/products-with-cat'
         useEffect(() => {
           const token = localStorage.getItem("token");
@@ -32,13 +33,16 @@ import axios from 'axios';
       const promise = axios.get(URL,config)
           promise.then(response => {
             setProducts(response.data);
+            setLoading(true)
             
           });
         }, []);
+        
         const [state,dispatch] = useReducer(cartReducer, {
             products:products,
             cart:[]
         })
+   
         return <Cart.Provider value={{  state,dispatch }} >{children}</Cart.Provider>
     }
 
