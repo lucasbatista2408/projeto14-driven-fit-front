@@ -16,8 +16,7 @@ export default function Home(){
   return    <div><Header />
    <div className="back-ground-dark">Adicione produtos ao carrinho</div>
   <div className="home">
-   
-   
+
      <div className="containerofProducts">
        {
          products.map((prod)=>{
