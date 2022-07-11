@@ -11,7 +11,7 @@ function Cadastro(){
     email: '',
     password: '',
     confirm: '',
-    picture: ''
+    photo: ''
   })
 
   const navigate = useNavigate();
